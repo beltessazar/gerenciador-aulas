@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>708</width>
-    <height>600</height>
+    <width>891</width>
+    <height>755</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_salvar">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>360</y>
+      <y>290</y>
       <width>651</width>
       <height>23</height>
      </rect>
@@ -52,7 +52,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>140</y>
+      <y>90</y>
       <width>251</width>
       <height>22</height>
      </rect>
@@ -62,7 +62,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>120</y>
+      <y>70</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -75,7 +75,7 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>120</y>
+      <y>70</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -88,17 +88,17 @@
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>140</y>
+      <y>90</y>
       <width>110</width>
       <height>22</height>
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="textEditConteudo">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>200</y>
+      <y>150</y>
       <width>371</width>
       <height>131</height>
      </rect>
@@ -108,7 +108,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>180</y>
+      <y>130</y>
       <width>151</width>
       <height>16</height>
      </rect>
@@ -121,7 +121,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>120</y>
+      <y>70</y>
       <width>171</width>
       <height>16</height>
      </rect>
@@ -134,11 +134,41 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>140</y>
+      <y>90</y>
       <width>241</width>
       <height>22</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>330</y>
+      <width>651</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>Id</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Aluno</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Instrumento</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Conteúdo</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -146,7 +176,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>708</width>
+     <width>891</width>
      <height>21</height>
     </rect>
    </property>

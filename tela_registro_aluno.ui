@@ -57,8 +57,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Nome:</string>
@@ -80,9 +79,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Instrumento que será aprendido:</string>
@@ -104,8 +101,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Data do registro:</string>
@@ -121,8 +117,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QDateEdit" name="dateEdit">
@@ -141,11 +136,10 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-</string>
+     <string notr="true"/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="text_box_aluno">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -155,11 +149,10 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-</string>
+     <string notr="true"/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btn_salvar">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -175,8 +168,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Salvar</string>
