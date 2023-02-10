@@ -25,13 +25,14 @@ def salvar_aula():
         msgBox.setWindowTitle("Erro!")
         msgBox.exec()
     else:
+        
         msgBox = QMessageBox()
         msgBox.setIcon(QMessageBox.Information)
         msgBox.setText('Dados Salvos!\nAluno: '+aluno+'\nInstrumento: '+
         instrumento+'\nData: '+data+'\nConteúdo: '+conteudo)
         msgBox.setWindowTitle("Registrando Aula")
         msgBox.exec()
-        
+        bd.registrar_aula(aluno, instrumento, conteudo)
         tela_aula.close()
     
 def salvar_aluno():
@@ -77,9 +78,9 @@ def salvar_instrumento():
 ##def excluir_instrumento:
 def abrir_registro_aula():
     registro_aula = bd.buscar_registro_aulas()
+    print(registro_aula)
     tela_aula.tableWidget.setRowCount(len(registro_aula))
     print(len(registro_aula))
-    print(registro_aula[0][0])
     row = 0
     for x in registro_aula:
         tela_aula.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(str(x[0])))

@@ -5,20 +5,39 @@ try:
         conn = sqlite3.connect('gerenciador_aulas.bd')
 except Error as e:
         print(e)
-
 cursor = conn.cursor()
+##iniciando tabelas caso não existam
+cursor.execute ('''CREATE TABLE IF NOT EXISTS aluno
+                        (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        nome TEXT NOT NULL,
+                        data_registro DATE)
+                ''')
+cursor.execute ('''CREATE TABLE IF NOT EXISTS instrumento
+                        (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        nome TEXT NOT NULL)
+                ''')
+cursor.execute ('''CREATE TABLE IF NOT EXISTS registro_aula
+                        (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        nome_aluno TEXT NOT NULL,
+                        instrumento TEXT NOT NULL,
+                        descricao_aula TEXT NOT NULL,
+                        data DATE)
+                ''')
+
 print(conn)
 print(cursor)
+
 
 ## inserts
 def cadastrar_instrumento(x):
         cursor.execute("INSERT INTO instrumento (nome) VALUES (?)", (x,))
         conn.commit()
-def registrar_aula(nome, instrumento, descricao, data):
-        cursor.execute("INSERT INTO registro_aula(nome_aluno, instrumento, descricao_aula, data) VALUES (?, ?, ?, ?)", (nome, instrumento, descricao, data,))
+def registrar_aula(nome, instrumento, descricao):
+        cursor.execute("""INSERT INTO registro_aula(nome_aluno,instrumento, descricao_aula) VALUES (?, ?, ?)""", (nome, instrumento, descricao,))
         conn.commit()
 def cadastrar_aluno(nome, data):
-        cursor.execute("INSERT INTO aluno (nome, data_registro) VALUES (?, ?)", (nome, data))
+        cursor.execute("INSERT INTO aluno (nome, data_registro) VALUES (?, ?)", (
+                nome, data))
         conn.commit()
 ## selects
 def buscar_alunos():
@@ -91,4 +110,4 @@ def nomes_alunos():
 ##    print("SERVIDOR DESLIGADO! :(")
 x = datetime.datetime.now().strftime("%d/%m/%Y")
 print(x)
-print(buscar_alunos())
+
