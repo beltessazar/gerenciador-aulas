@@ -32,6 +32,7 @@ def salvar_aula():
         instrumento+'\nData: '+data+'\nConteúdo: '+conteudo)
         msgBox.setWindowTitle("Registrando Aula")
         msgBox.exec()
+        carregar_tabela_aulas()
         bd.registrar_aula(aluno, instrumento, conteudo)
         tela_aula.close()
     
@@ -76,11 +77,9 @@ def salvar_instrumento():
 ##def excluir_aluno:
 ##def excluir_aula:
 ##def excluir_instrumento:
-def abrir_registro_aula():
+def carregar_tabela_aulas():
     registro_aula = bd.buscar_registro_aulas()
-    print(registro_aula)
     tela_aula.tableWidget.setRowCount(len(registro_aula))
-    print(len(registro_aula))
     row = 0
     for x in registro_aula:
         tela_aula.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(str(x[0])))
@@ -88,7 +87,8 @@ def abrir_registro_aula():
         tela_aula.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(str(x[2])))
         tela_aula.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(str(x[3])))
         row=row+1
-
+def abrir_registro_aula():
+    carregar_tabela_aulas()
     tela_aula.combo_instrumentos.addItems(bd.nomes_instrumentos()) 
     tela_aula.dateEdit.setMinimumDate(QDate.currentDate()) 
     tela_aula.combo_alunos.addItems(bd.nomes_alunos())
@@ -101,13 +101,24 @@ def abrir_tela_registro_aluno():
     tela_registro_aluno.dateEdit.setMinimumDate(QDate.currentDate()) 
     tela_registro_aluno.combo_instrumento.addItems(bd.nomes_instrumentos())
     tela_registro_aluno.show()
-
+def abrir_aulas_salvas():
+    registro_aula = bd.buscar_registro_aulas()
+    tela_aulas_salvas.tableWidget.setRowCount(len(registro_aula))
+    row = 0
+    for x in registro_aula:
+        tela_aulas_salvas.tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(str(x[0])))
+        tela_aulas_salvas.tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(str(x[1])))
+        tela_aulas_salvas.tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(str(x[2])))
+        tela_aulas_salvas.tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(str(x[3])))
+        row=row+1
+    tela_aulas_salvas.show()
 app = QtWidgets.QApplication(sys.argv)
 #tela menu
 tela_menu = uic.loadUi('tela_menu.ui')
 tela_menu.btn_registrar_aula.clicked.connect(abrir_registro_aula)
 tela_menu.btn_instrumentos.clicked.connect(abrir_tela_instrumentos)
 tela_menu.btn_registrar_aluno.clicked.connect(abrir_tela_registro_aluno)
+tela_menu.btn_visualizar_registros.clicked.connect(abrir_aulas_salvas)
 #tela instrumentos
 tela_instrumento = uic.loadUi('tela_instrumento.ui')
 ##y = bd.nomes_instrumentos()
@@ -115,9 +126,9 @@ tela_instrumento = uic.loadUi('tela_instrumento.ui')
 tela_instrumento.btn_salvar.clicked.connect(salvar_instrumento)
 #tela aula
 tela_aula = uic.loadUi('tela_aula.ui')
-
 tela_aula.btn_salvar.clicked.connect(salvar_aula)
-
+#tela aulas salvas
+tela_aulas_salvas = uic.loadUi('tela_aulas_salvas.ui')
 #tela registro aluno
 tela_registro_aluno = uic.loadUi('tela_registro_aluno.ui')
 tela_registro_aluno.btn_salvar.clicked.connect(salvar_aluno)
